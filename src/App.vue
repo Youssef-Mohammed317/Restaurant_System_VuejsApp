@@ -1,10 +1,15 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <Navbar v-if="$route.name !== 'Login' && $route.name !== 'Signup'" />
+  <router-view />
 </template>
+
+<script>
+import Navbar from "./components/global/Navbar.vue";
+export default {
+  name: "App",
+  components: { Navbar },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -14,17 +19,19 @@
   text-align: center;
   color: #2c3e50;
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.inputsWidth,
+input {
+  max-width: 350px;
+}
+textarea.inputsWidth {
+  min-height: 150px !important;
+}
+.error-message {
+  color: rgb(186, 2, 2);
+  margin-top: 5px;
+}
+.user-message {
+  text-align: center;
+  color: rgb(43, 113, 193);
 }
 </style>
